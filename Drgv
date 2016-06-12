@@ -1,0 +1,136 @@
+
+*fontList: variable
+*background: gray
+
+!
+! Main Window
+!
+*mainpopup.title: drgv
+*mainwin.display.width: 400
+*mainwin.display.height: 480
+
+*mapname.title: Name
+*mapnameview.width: 350
+*mapnameview.height: 250
+*mapname.x: 0
+*mapname.y: 725
+*mapother.title: Other Data
+*mapotherview.width: 350
+*mapotherview.height: 250
+*mapother.x: 365
+*mapother.y: 725
+*mapscale.title: Scale
+*mapscaleview.width: 350
+*mapscaleview.height: 250
+*mapscale.x: 730
+*mapscale.y: 725
+
+*File.mnemonic: F
+*filemenu.Load.mnemonic: L
+*filemenu.Load.accelerator: Ctrl<Key>L
+*filemenu.Load.acceleratorText: Ctrl+L
+*filemenu.List.labelString: List...
+*filemenu.Next.mnemonic: N
+*filemenu.Next.accelerator: Ctrl<Key>N
+*filemenu.Next.acceleratorText: Ctrl+N
+*filemenu.Previous.mnemonic: P
+*filemenu.Previous.accelerator: Ctrl<Key>P
+*filemenu.Previous.acceleratorText: Ctrl+P
+*filemenu.Quit.mnemonic: Q
+*filemenu.Quit.accelerator: Ctrl<Key>Q
+*filemenu.Quit.acceleratorText: Ctrl+Q
+
+*View.mnemonic: V
+*viewmenu*CurrentPoint.labelString: Center on Current Point
+*viewmenu*CurrentPoint.mnemonic: C
+*viewmenu*NextPoint.labelString: Center on Next Point
+*viewmenu*NextPoint.mnemonic: N
+*viewmenu*NextPoint.accelerator: <Key>Right
+*viewmenu*NextPoint.acceleratorText: Right Arrow
+*viewmenu*PrevPoint.labelString: Center on Previous Point
+*viewmenu*PrevPoint.mnemonic: P
+*viewmenu*PrevPoint.accelerator: <Key>Left
+*viewmenu*PrevPoint.acceleratorText: Left Arrow
+*viewmenu*FullView.labelString: Show Entire Map
+*viewmenu*FullView.mnemonic: E
+*viewmenu*FullView.accelerator: Ctrl<Key>E
+*viewmenu*FullView.acceleratorText: Ctrl+E
+*viewmenu*ChangeZoom.labelString: Change Zoom Factor...
+*viewmenu*ShowCursorPos.labelString: Show Cursor Position
+
+*Tools.mnemonic: T
+*toolmenu*MeasureDist.labelString: Measure Distance...
+*toolmenu*MeasureDist.mnemonic: M
+*toolmenu*MeasureDist.accelerator: Ctrl<Key>M
+*toolmenu*MeasureDist.acceleratorText: Ctrl+M
+*toolmenu*ZoomPan.labelString: Zoom/Pan
+*toolmenu*ZoomPan.mnemonic: Z
+*toolmenu*ZoomPan.accelerator: Ctrl<Key>Z
+*toolmenu*ZoomPan.acceleratorText: Ctrl+Z
+
+*ctrlptpopup.title: drgv: Control Points
+*ctrlptpopup.width: 400
+*ctrlptpopup.height: 400
+*ctrlptpopup.x: 415
+*ctrlptpopup.y: 0
+
+!
+! Distance Dialog
+!
+*distdialog.title: drgv: Distance
+*distdialog.width: 500
+*distdialog*Report.labelString: Report...
+*distdialog*AddToReport.labelString: Add To Report
+!
+! FileList Popup
+!
+*filepopup.title: drgv: Files
+*filepopup.width: 300
+
+!
+! Error popup
+!
+*error_popup.title: drgv: Error!
+*error_popup.width: 300
+
+!
+! Zoom Factor popup
+!
+*zoomslider.width: 300
+*zoomslider.title: drgv:Zoom Factor
+*zoomslider*label.labelString: Current Zoom Factor:
+*zoomslider*scale.minimum: 0
+*zoomslider*scale.maximum: 1500
+*zoomslider*scale.decimalPoints: 2
+*zoomslider*scale.showValue: true
+
+!
+! File Dialog 
+!
+*filedialog_popup.title: drgv: Load File
+
+!
+! Error Report Dialog
+!
+*errorreport.title: drgv: Error Report
+*errorreport.width: 700
+*errorreport*DeleteEntry.labelString: Delete Entry
+*errorreport*Comments.labelString: Comments...
+!
+! Save Error Report File Selection Box
+!
+*fsb_popup.title: drgv: Save Error Report
+
+*errorwobj_popup.title: drgv: Error!
+
+!
+! Error Report Comments Dialog
+!
+*commentswobj.title: drgv: Error Report Comments
+*commentswobj*textarea.editMode: XmMULTI_LINE_EDIT
+!*commentswobj*textarea.wordWrap: true
+!*commentswobj*textarea.scrollHorizontal: false
+*commentswobj*textarea.fontList: fixed
+*commentswobj*textarea.columns: 80
+*commentswobj*textarea.rows: 10
+ 

@@ -1,0 +1,93 @@
+
+prefix		=	@prefix@
+exec_prefix	=	@exec_prefix@
+host_os		=	@host_os@
+srcdir		=	@srcdir@
+top_srcdir	=	@top_srcdir@
+gen_depend	=	@gen_depend@
+subdirs		=	@subdirs@
+
+# DG/UX (Data General UNIX)
+ifeq ($(findstring dgux,$(host_os)),dgux)
+INCPATHS = -I$(prefix)/include
+LIBPATHS = -L$(prefix)/lib
+LIBS =  -lWObj -lmvc -lImage -lgeotiff -ltiff -ldrg \
+        -lXm -lXt -lXext -lX11 -lPW -lgctpc -lpng -lz -lm
+CXXFLAGS:=$(CXXFLAGS) $(INCPATHS)
+endif
+
+# Linux
+ifeq ($(host_os),linux)
+INCPATHS = -I/usr/X11R6/include -I$(prefix)/include
+LIBPATHS = -L/usr/X11R6/lib -L$(prefix)/lib
+LIBS =  -lWObj -lmvc -lImage -ltiff -ldrg \
+	-lXm -lXt -lXext -lX11 -lgctpc -lpng -lz -lm
+CXXFLAGS:=$(CXXFLAGS) -g $(INCPATHS)
+endif
+
+LDFLAGS= $(LIBPATHS)
+LOADLIBES= $(LIBS)
+
+LIBDEST=$(prefix)/lib
+
+CXX=g++
+CC=gcc
+
+SRCS=	drgv.cc				\
+	DRGVMainWObj.cc			\
+	DistDialogWObj.cc		\
+	ErrorWObj.cc			\
+	ErrRepCommentsWObj.cc		\
+	FileListWObj.cc			\
+	XView2DWObj.cc			\
+	XMultiView2DWObj.cc		\
+	DRGVZoomController.cc		\
+	MultiViewZoomController.cc	\
+	DistController.cc		\
+	ErrorReportWObj.cc		\
+	DRGVControlPoints.cc		\
+	DRGVStuffWObj.cc
+
+OBJS=$(SRCS:.cc=.o)
+
+all: packages drgv
+
+packages:
+	@for package in $(subdirs) ; do  \
+	   if test -d $${package} ; then \
+	      cd $${package} ; $(MAKE) ; \
+	   else \
+	      echo "Package '$${package}' not found, continuing..." ; \
+	   fi \
+	done
+
+drgv: $(OBJS)
+	$(CXX) -o drgv $(OBJS) $(LIBS) $(LIBPATHS)
+
+clean:
+	rm -rf drgv *.o *.a *~* core include lib
+	@for package in $(subdirs) ; do        \
+	   if test -d $${package} ; then       \
+	      cd $${package} ; $(MAKE) clean ; \
+	   fi                                  \
+	done
+
+realclean: 
+	rm -rf config.cache config.status config.log
+	@for package in $(subdirs) ; do              \
+	   if test -d $${package} ; then             \
+	      cd $${package} ; $(MAKE) realclean ;   \
+	   fi                                        \
+	done
+
+ifeq ($(gen_depend),yes)
+# Automatic generation of dependencies
+%.d: %.cc
+	@echo "Regenerating dependencies for $<";$(SHELL) -ec '$(CC) \
+	$(INCPATHS) -MM $(CPPFLAGS) $< | sed '\''s/$*.o/& $@/g'\'' > $@'
+
+
+include $(SRCS:.cc=.d)
+
+endif
+
